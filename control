@@ -1,9 +1,9 @@
 Package: com.jerrytian.shortlook.plugin.contact-photo.qq
 Name: QQ Profile Pictures for ShortLook
-Depends: mobilesubstrate, co.dynastic.ios.tweak.shortlook
+Depends: mobilesubstrate, shortlook.xina2
 Version: 1.0.1
 Architecture: iphoneos-arm
-Description: Show QQ/TIM users' profile pictures in ShortLook when you receive a QQ/TIM notification!
+Description: 当您收到QQ/TIM通知时，在ShortLook中显示QQ/TIM用户的头像!
 Maintainer: Jianan Tian
 Author: Jianan Tian
 Section: Tweaks (ShortLook)
