@@ -1,0 +1,37 @@
+name: Build Package
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: Build Package
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Install Procursus
+        uses: wwg135/procursus-action@main
+        with:
+          packages: ldid findutils sed coreutils make
+          
+      - name: Pre theos
+        run: |
+         curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos > theos
+         sed -i '' 's/get_sdks$//g' theos
+         bash theos
+          
+      - name: Build Package
+        run: |
+          export THEOS=~/theos
+          make package
+          
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Packages
+          path: packages/
